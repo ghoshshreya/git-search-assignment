@@ -1,0 +1,49 @@
+<div id="user-details-container">
+  
+  <!--BACK BUTTON-->
+  <a routerLink="/search" class="back-label"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back To Search</a>
+
+  <div class="profile-loader" *ngIf="!this.isProfileReady else showData"><loader [showText]="false"></loader></div>
+  
+  <ng-template #showData>
+    <div *ngIf="undefined != currUserDetails" id="user-data-container">
+      <div><img [src]="currUserDetails.avatar_url" class="avatar-url"></div>
+      <div class="color-white"><strong> {{currUserDetails.name}} </strong> </div>
+      
+      <div class="link-holder color-white"> 
+        <a class="page-link-holder hover-effect" [href]="currUserDetails.html_url" target="_blank"> <i class="fa fa-github page-icon" aria-hidden="true"></i> {{currUserDetails.html_url | replace : 'https://github.com/'}}</a>               
+      </div>
+
+      <div class="repo-label">Respositores</div>
+      
+      <div *ngIf="!this.isRepodataReady else repoDataReady"> Loading.. </div>
+
+      <ng-template #repoDataReady>
+        <div class="container-fluid repo-data-holder" *ngIf="this.displayRepoArray.length >0 else noData">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-xs-4 col-sm-4 repo-col repo-col-header">Name</div>
+            <div class="col-lg-5 col-md-5 col-xs-8 col-sm-8 repo-col repo-col-header">Description</div>
+            <div class="col-lg-1 col-md-1 repo-col repo-col-header">Size</div>
+            <div class="col-lg-1 col-md-1 repo-col repo-col-header">Lang..</div>
+            <div class="col-lg-2 col-md-2 repo-col repo-col-header">Link</div>
+          </div>
+
+          <div class="row" *ngFor="let repoData of this.displayRepoArray">
+            <div class="col-lg-3 col-md-3 col-xs-4 col-sm-4 repo-col">{{repoData.repoName}}</div>
+            <div class="col-lg-5 col-md-5 col-xs-8 col-sm-8 repo-col">{{repoData.repoDesc | clipString : 100}}</div>
+            <div class="col-lg-1 col-md-1 repo-col">{{repoData.size}}</div>
+            <div class="col-lg-1 col-md-1 repo-col">{{repoData.language}}</div>
+            <div class="col-lg-2 col-md-2 repo-col"><a [href]="repoData.repoLink" target="_blank" [title]="repoData.repoLink" class="view-button">View In Github</a></div>
+          </div>
+        </div>
+
+        <ng-template #noData>
+          <div class="no-data">NO REPOSITORY DATA</div>
+        </ng-template>
+        <div class="repo-load-more"*ngIf="this.displayRepoArray.length < this.repoArray.length" (click)="loadMore()">Load More
+        </div>  
+      </ng-template></div>
+  </ng-template>
+
+  <ng-template #replacer> <span>--</span> </ng-template>
+</div>

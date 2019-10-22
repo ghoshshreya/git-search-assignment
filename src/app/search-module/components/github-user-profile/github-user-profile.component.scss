@@ -1,0 +1,166 @@
+@import '../../../global-styles/global-styles.scss';
+@import '../../../global-styles/generic-dropdown.scss';
+
+.repo-col {
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+.repo-col-header {
+  background-color: rgb(192, 192, 192);
+  color: black;
+}
+
+#user-details-container {
+  padding: 10px;
+}
+
+.avatar-url {
+  height: 120px;
+  width: auto;
+  border: 5px solid white;
+  border-radius: 50%;  
+}
+
+.page-icon {
+  font-size: 20px;
+  padding-right: 5px;
+}
+
+.page-link-holder {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+  padding: 10px;
+  background-color:white;
+  border-radius: $liner-border-radius;
+  box-shadow: $generic-shadow;
+  margin-right: 10px;
+}
+
+.back-label i {
+  font-size: 20px;
+}
+
+.back-label {
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+}
+
+.back-label:hover {
+  @extend .hover-effect;
+}
+
+#user-data-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+} 
+
+.link-holder {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding: 10px;
+}
+
+.follower-holder {
+  font-size: 14px;
+}
+
+.repo-load-more {
+  background-color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: $generic-shadow;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.repo-load-more:hover {
+  opacity: 0.9;
+}
+
+.no-data {
+  font-size: 16px;
+  padding: 10px;
+  color: white;
+}
+
+.repo-data-holder {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: $generic-shadow;
+  font-size: 14px;
+}
+
+/*----------LAPTOP----------*/
+// @media only screen and (min-width: 960px) {
+//   .container-fluid {
+//     background-color: grey;
+//   }    
+// }
+
+/*----------TAB ----------*/
+@media all and (min-width: 768px) and (max-width: 959px) {  
+  // .container-fluid {
+  //   background-color: grey;
+  // } 
+  .col-lg-1,.col-lg-2 {
+      display:none;
+      width:0;
+      height:0;
+      opacity:0;
+      visibility: collapse;       
+  } 
+}
+
+@media all and (min-width: 600px) and (max-width: 767px) {
+  // .container-fluid {
+  //   background-color: red;
+  // } 
+  .col-lg-1, .col-lg-2{
+    display:none;
+    width:0;
+    height:0;
+    opacity:0;
+    visibility: collapse;
+  } 
+}
+
+/*----------MOBILE ----------*/
+@media only screen and (max-width: 767px) {
+  .col-lg-1, .col-lg-2 {
+    display:none;
+    width:0;
+    height:0;
+    opacity:0;
+    visibility: collapse;
+  }  
+}
+
+/*----------MOBILE :: PORTRAIT----------*/
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+  .col-lg-1, .col-lg-2 {
+    display:none;
+    width:0;
+    height:0;
+    opacity:0;
+    visibility: collapse;
+  }
+}
+
+.repo-label {
+  font-size: 18px;
+  color: white;
+}
+
+.profile-loader {
+  display: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+

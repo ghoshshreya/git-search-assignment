@@ -1,0 +1,37 @@
+/* Add application styles & imports to this file! */
+@import 'jasmine-core/lib/jasmine-core/jasmine.css';
+
+body, html {
+  font-family: 'Roboto Mono', monospace, serif;
+  font-size: 16px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-color: rgb(0, 60, 255);
+}
+
+::placeholder {
+  color: grey;
+  opacity: 1; /* Firefox */
+  font-style: italic;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: grey;
+  font-style: italic;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: grey;
+  font-style: italic;
+}
+
+button {
+  opacity: 1;
+  transition: 0.3s;
+}
+button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

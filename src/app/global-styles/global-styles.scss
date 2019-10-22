@@ -1,0 +1,50 @@
+$linear-padding: 20px;
+$generic-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+$liner-border-radius: 6px;
+
+/*----------FLEXBOX----------*/
+.flex-display-row {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-display-column {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*----------BUTTONS AND INPUTS----------*/
+.remove-button-default-style {
+  border: none;
+  outline: none;
+}
+
+.remove-input-default-style {
+  border: none;
+  outline: none;
+}
+
+.remove-input-default-style input:focus, select:focus{
+  outline: none;
+}
+
+.no-action {
+  pointer-events: none;
+}
+
+.hover-effect:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.color-white {
+  color: white;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}

@@ -1,0 +1,19 @@
+@import '../../../global-styles/global-styles.scss';
+
+.nav-container {
+  box-shadow: $generic-shadow;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  display: flex;
+  flex-flow: row;  
+}
+
+.nav-item {
+  display: block;  
+}
+
+#logout {
+  cursor: pointer;
+  margin-left: auto;
+}

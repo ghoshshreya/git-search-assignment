@@ -1,0 +1,9 @@
+<div id="page-container">
+  <div id="nav-bar" *ngIf="showNavBar">
+    <nav-bar [loggedInUserName]="this.loggedInUserName"></nav-bar>
+  </div>
+
+  <div id="router-container">
+    <router-outlet (activate)="this.routeActivated($event)"></router-outlet>
+  </div>
+</div> 

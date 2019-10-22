@@ -1,0 +1,7 @@
+<!-- <div class="loader"></div><span class="loader-text" *ngIf="showText">Loading...</span> -->
+
+<span class="loader-text" *ngIf="showText else showLoader">Loading...</span>
+
+<ng-template #showLoader>
+  <div class="loader"></div>
+</ng-template>

@@ -1,0 +1,38 @@
+@import '../../../global-styles/global-styles.scss';
+
+#search-input, #search-type {
+  @extend .remove-input-default-style;
+  padding: 15px;
+  box-shadow: $generic-shadow;
+  margin-right: 10px;
+  background-color: #ffffff;
+  font-size: 12px;
+  border-radius: $liner-border-radius;
+}
+
+#search-input {
+  -webkit-transition: width 0.5s ease-out; /* For Safari 3.1 to 6.0 */
+  transition: width 0.5s ease-out;
+}
+
+#search-button {
+  @extend .remove-button-default-style;
+  @extend .flex-display-row;
+
+  background-color: #ffffff;
+  box-shadow: $generic-shadow;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+#search-icon {
+  color: grey;  
+}
+
+#search-box-holder {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+}

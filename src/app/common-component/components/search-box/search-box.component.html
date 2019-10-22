@@ -1,0 +1,20 @@
+<form [formGroup]="searchForm" (ngSubmit)="triggerSearch(searchForm.value)">
+    <div id="search-box-holder" >
+      
+      <div class="dropdown">
+        <input 
+          type="text" 
+          formControlName="searchInput" 
+          autocomplete="off"
+          placeholder="Start searching for users..." 
+          maxlength="50"
+          (click)="this.changeState('focusedState')"
+          [@changeState]="toState"
+          id="search-input">
+      </div>
+
+      <button type="submit" [disabled]="!searchForm.valid || !isReady" id="search-button"> 
+        <i class="fa fa-search" aria-hidden="true" id="search-icon"></i>
+      </button>    
+    </div>
+</form>

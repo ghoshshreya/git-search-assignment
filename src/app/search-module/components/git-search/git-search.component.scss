@@ -1,0 +1,41 @@
+@import '../../../global-styles/global-styles.scss';
+@import '../../../global-styles/generic-dropdown.scss';
+
+#search-component-holder {
+  height: 100%;
+}
+
+#search-component-holder div:first-child {
+  display: inline-block;
+}
+
+.no-data-text {
+  font-style: italic ;
+  font-size: 14px;
+  color: grey;
+}
+
+.load-more-button {
+  text-align: center;
+  background-color: rgb(221, 221, 221);
+}
+
+.dropdown-link {
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+  background-color: white;   
+}
+
+.dropdown-link span {
+  width: 150px;
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden; 
+}
+
+.dropdown-link:hover {
+  font-weight: bold;
+  background-color: rgb(238, 238, 238);
+}

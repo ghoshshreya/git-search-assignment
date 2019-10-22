@@ -1,0 +1,10 @@
+<div class="nav-container">
+  <span class="nav-item">
+    <strong>Hello</strong>
+    <ng-container *ngIf="loggedInUserName"> {{loggedInUserName}}</ng-container>!
+  </span> 
+
+  <span (click)="logout()" class="nav-item" id="logout">
+    <i class="fa fa-power-off" aria-hidden="true"></i>
+  </span>
+</div>

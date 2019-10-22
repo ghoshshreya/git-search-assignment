@@ -1,0 +1,26 @@
+<div id="login-container">
+  <div id="login-inner-container">
+    <div id="sign-in-label">Sign In</div>
+    <span id="sign-in-inst-label">Use your github username to login</span>
+    <div id="login-form-holder" *ngIf="this.loginForm">
+      <form [formGroup]="this.loginForm" (ngSubmit)="this.login(this.loginForm.value)">
+        <input 
+          type="text" 
+          id="username" 
+          name="userName" 
+          formControlName="userName" 
+          placeholder="Enter username.."
+          [maxLength]="this.maxLengthThreshold"
+        >
+        <!--REQUIRED VALIDATION-->
+        <span class="error-text" *ngIf="this.loginForm.get('userName').touched && this.loginForm.get('userName').hasError('required')">Username is a mandatory feild!</span>
+        <!--USETNAME REGEX CUSTOM VALIDATION-->
+        <span class="error-text" *ngIf="this.loginForm.get('userName').touched && !this.loginForm.get('userName').hasError('required') && this.loginForm.get('userName').hasError('validateUserName')">
+          Username is invalid! <br><br>
+          Github username may only contain alphanumeric characters/hyphens, cannot have multiple consecutive hyphens and cannot begin or end with a hyphen</span>        
+        
+        <button type="submit" id="login-button" [disabled]="!this.loginForm.valid">Login</button>
+      </form>
+    </div>
+  </div>  
+</div>

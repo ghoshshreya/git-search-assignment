@@ -1,0 +1,2 @@
+1. Search Users - https://api.github.com/search/users?q=user-name;
+2. Get a particular user data - https://api.github.com/users/user-name;

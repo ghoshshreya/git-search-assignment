@@ -1,0 +1,38 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: block;
+  margin-top: 10px;
+  position: absolute;
+  background-color: #ffffff;
+  width: 300px;
+  border-radius: 6px;
+  box-shadow: $generic-shadow;
+  z-index: 1;
+  max-height: 300px;
+  overflow-y: auto; 
+}
+
+.dropdown-content p {
+  cursor: pointer;
+  padding: 10px;
+  margin: 0;
+  font-size: 14px;
+  max-width: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-content p:hover {
+  font-weight: bold;
+  background-color: rgb(240, 240, 240);
+}
+
+.dropdown-link {
+  text-decoration: none;
+  color: black;
+}

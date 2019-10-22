@@ -1,0 +1,34 @@
+<!--SEARCH BOX-->
+<ng-container *ngIf="undefined == selectedUser else selectedUserData">
+  <div id="search-component-holder" class="flex-display-row">
+    <div class="dropdown">
+      <search-box 
+        (triggerSearchEvent) = "this.triggerSearch($event)"
+        [isReady] = "this.isReady"
+      ></search-box>
+
+      <!--LOADER-->
+      <div class="dropdown-content" *ngIf="!this.isReady">
+        <p class="no-action"><loader [showText]="true"></loader></p>
+      </div>
+
+      <!--NO DATA-->
+      <div class="dropdown-content" *ngIf="this.isReady && this.noData">
+        <p class="no-action no-data-text">No search results..</p>
+      </div>    
+      
+      <!--SEARCH DATA-->
+      <div class="dropdown-content" *ngIf="this.isReady && !this.noData && this.searchedUserDisplayArray.length>0">
+        <!-- <p *ngFor="let user of this.searchedUserDisplayArray">
+          <a class="dropdown-link" [routerLink]="['./userProfile',user.login]">{{user.login | titlecase}}</a>
+        </p> -->
+
+        <a *ngFor="let user of this.searchedUserDisplayArray" class="dropdown-link" [routerLink]="['./userProfile',user.login]"><span>{{user.login | titlecase}}</span></a>
+
+        <!--LOAD MORE DATA-->
+        <p class="load-more-button" *ngIf="this.searchedUserArray.length > this.searchedUserDisplayArray.length"
+          (click)="loadMore()">Load More</p>
+      </div>
+    </div>  
+  </div>
+</ng-container>
