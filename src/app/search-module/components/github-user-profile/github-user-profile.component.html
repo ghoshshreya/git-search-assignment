@@ -8,10 +8,12 @@
   <ng-template #showData>
     <div *ngIf="undefined != currUserDetails" id="user-data-container">
       <div><img [src]="currUserDetails.avatar_url" class="avatar-url"></div>
-      <div class="color-white"><strong> {{currUserDetails.name}} </strong> </div>
+      <div class="color-white"><strong> 
+        <ng-container>{{currUserDetails.name}}</ng-container> </strong> </div>
       
       <div class="link-holder color-white"> 
-        <a class="page-link-holder hover-effect" [href]="currUserDetails.html_url" target="_blank"> <i class="fa fa-github page-icon" aria-hidden="true"></i> {{currUserDetails.html_url | replace : 'https://github.com/'}}</a>               
+        <a class="page-link-holder hover-effect" [href]="currUserDetails.html_url" target="_blank"> <i class="fa fa-github page-icon" aria-hidden="true"></i> 
+        <ng-container *ngIf="">{{currUserDetails.html_url | replace : 'https://github.com/'}}</ng-container></a>               
       </div>
 
       <div class="repo-label">Respositores</div>
@@ -30,7 +32,7 @@
 
           <div class="row" *ngFor="let repoData of this.displayRepoArray">
             <div class="col-lg-3 col-md-3 col-xs-4 col-sm-4 repo-col">{{repoData.repoName}}</div>
-            <div class="col-lg-5 col-md-5 col-xs-8 col-sm-8 repo-col">{{repoData.repoDesc | clipString : 100}}</div>
+            <div class="col-lg-5 col-md-5 col-xs-8 col-sm-8 repo-col"><ng-container *ngIf="repoData.repoDesc">{{repoData.repoDesc | clipString : 100}}</ng-container></div>
             <div class="col-lg-1 col-md-1 repo-col">{{repoData.size}}</div>
             <div class="col-lg-1 col-md-1 repo-col">{{repoData.language}}</div>
             <div class="col-lg-2 col-md-2 repo-col"><a [href]="repoData.repoLink" target="_blank" [title]="repoData.repoLink" class="view-button">View In Github</a></div>

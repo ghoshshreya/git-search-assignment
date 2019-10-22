@@ -19,10 +19,6 @@
       
       <!--SEARCH DATA-->
       <div class="dropdown-content" *ngIf="this.isReady && !this.noData && this.searchedUserDisplayArray.length>0">
-        <!-- <p *ngFor="let user of this.searchedUserDisplayArray">
-          <a class="dropdown-link" [routerLink]="['./userProfile',user.login]">{{user.login | titlecase}}</a>
-        </p> -->
-
         <a *ngFor="let user of this.searchedUserDisplayArray" class="dropdown-link" [routerLink]="['./userProfile',user.login]"><span>{{user.login | titlecase}}</span></a>
 
         <!--LOAD MORE DATA-->

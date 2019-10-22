@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, Output, EventEmitter, OnDestroy} from '@angular/core';
 import { Router } from '@angular/router'; 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from '../../../shared/services/common-service.service';
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './git-search.component.html',
   styleUrls: ['./git-search.component.scss']
 })
-export class GitSearchComponent {
+export class GitSearchComponent implements OnDestroy{
   
   public initialSearchResultThreshold: number = 3;
   public searchedUserArray = [];  
@@ -69,6 +69,7 @@ export class GitSearchComponent {
     }
   }
 
+  /*---------METHOD TO HANDLE LOAD MORE FUNCTIONALITY FOR THE SEARCH RESULTS----------*/
   loadMore()
   {
     let counter = 0;
@@ -84,5 +85,16 @@ export class GitSearchComponent {
       }
       counter++;
     }    
-  }   
+  }  
+
+  ngOnDestroy()
+  {
+    this.unsubscribeAll()
+  }
+  
+  /*----------METHOD TO UNSUBSCRIBE TO ALL PENDING SUBSCRIPTIONS TO AVOID MEMORY LEAK----------*/
+  unsubscribeAll()
+  {
+    if(this.searchSubscription){this.searchSubscription.unsubscribe()}
+  } 
 }

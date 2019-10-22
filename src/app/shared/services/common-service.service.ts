@@ -1,24 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import {catchError} from 'rxjs/operators/catchError'; 
 
 @Injectable()
 export class CommonService {
 
   constructor(private _http: HttpClient) { }
 
-  get(url) {
-    console.error(url);
-    return this._http.get(url);
-    // .catchError(this.handleError('searchHeroes', [])  //TODO
+  get(url): Observable<any> {
+    return this._http.get(url).pipe(catchError(this.handleError));;
   }
 
-  private handleError(error: HttpErrorResponse) {
-  if (error.error instanceof ErrorEvent) 
-  {
-    console.error('Exception occurred :: ', error.error.message);
-  } 
-  return throwError(
-    'Something bad happened; please try again later.');
-};
-
+  private handleError(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) 
+    {
+        errorMessage = `Error: ${error.error.message}`;
+    }
+    else 
+    {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+ }
 }

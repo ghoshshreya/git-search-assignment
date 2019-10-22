@@ -48,7 +48,6 @@ export class GithubUserProfileComponent implements OnInit, OnDestroy {
         {
           this.currUserDetails = data;
           this.getRepoDetails(data.repos_url);
-          // this.getRepoDetails('../../assets/mock-json/getRepos.json');
         } 
         else
         {
@@ -83,7 +82,7 @@ export class GithubUserProfileComponent implements OnInit, OnDestroy {
           {
             if(y <= 50) //RECIEVING ONLY 50 RECORDS FOR NOW SINCE API IS SLOW
             {
-              if(!data[y].private)
+              if(!data[y].private && undefined != data[y].name) //FETCHING ONLY PUBLIC REPOSITORIES
               {
                 let repoDetailsEntity = new RepoDetailsModel(data[y].name,data[y].description,data[y].html_url,data[y].size, data[y].language);
                 this.repoArray.push(repoDetailsEntity);
@@ -116,16 +115,19 @@ export class GithubUserProfileComponent implements OnInit, OnDestroy {
   /*----------METHOD TO HANDLE THE LOAD MORE FUNCTIONALITY----------*/
   loadMore()
   {
-    if(this.repoArray.length>this.displayRepoArray.length)
+    if(undefined != this.repoArray && undefined != this.displayRepoArray)
     {
-      let counter = 0;
-      for(let x = this.displayRepoArray.length; x<this.repoArray.length; x++)
+      if(this.repoArray.length>this.displayRepoArray.length)
       {
-        if(counter < this.displayRepoThreshold)
+        let counter = 0;
+        for(let x = this.displayRepoArray.length; x<this.repoArray.length; x++)
         {
-          this.displayRepoArray.push(this.repoArray[x]);
+          if(counter < this.displayRepoThreshold)
+          {
+            this.displayRepoArray.push(this.repoArray[x]);
+          }
+          counter++;
         }
-        counter++;
       }
     }
   }
